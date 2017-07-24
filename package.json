@@ -2,7 +2,7 @@
   "name": "comboplayer",
   "displayName": "Combo Player",
   "version": "1.0.0",
-  "description": "An effecient customizable minimal cross-platform media player",
+  "description": "An efficient customizable minimal cross-platform media player",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
