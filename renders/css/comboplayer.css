@@ -1,0 +1,15 @@
+header > .btn:hover{
+	background-color: rgba(220, 220, 220, 0.8);
+}
+
+#directorycontentsview{
+	overflow-y: auto;
+}
+
+#sidemenu > ul.list-group-header{
+	text-align: center;
+}
+
+#centerpane{
+	padding: 7px;
+}
