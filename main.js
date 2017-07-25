@@ -7,15 +7,31 @@ const {app, BrowserWindow, dialog, ipcMain} = require('electron')
 let main_window
 
 
-// utility function to log happeneings
+// utility function to log happenings
 const _log = function(e, disp) {
 	console.error(e);
-	fs.access(os.tmpdir(), fs.constants.W_OK | fs.constants.R_OK, (err) => {
+	fs.access(os.homedir(), fs.constants.W_OK | fs.constants.R_OK, (err) => {
 		if(err)
 			return console.error(err)
-		let _logfile = path.join(os.tmpdir(), 'comboplayerjs-errorlog.txt')
-		fs.appendFile(_logfile, Date() + ' ::: ' + String(e) + '\n', (err) => {
-			console.error(err);
+
+		let _logfile = path.join(os.homedir(), '.comboplayer', 'comboplayer-errorlog.txt')
+		fs.appendFile(_logfile, Date() + ' ::: ' + e.message + '\n', (err) => {
+			if (err) {
+				console.log(err.code)
+				if (err.code == 'ENOENT') {
+					let _folderpath = _logfile.slice(0, _logfile.lastIndexOf('/'))
+				console.log(_folderpath)
+					fs.mkdir(_folderpath, (err) => {
+						if (err) {
+							return console.log(err)
+						}
+						fs.appendFile(_logfile, Date() + ' ::: ' + e.message + '\n', (err) => {
+							if(err)
+								console.log(err)
+						})
+					})
+				}
+			}
 		})
 	})
 	if(disp)
@@ -33,8 +49,8 @@ process.on('unhandledException', (err) => {
 })
 
 //set ipc
-ipcMain.on('log', (evt, msg) => {
-	_log(msg[0], msg[1])
+ipcMain.on('log', (evt, msg, opt) => {
+	_log(msg, opt)
 })
 
 ipcMain.on('appQuit', (evt, msg) => {
@@ -74,14 +90,15 @@ if (app.makeSingleInstance((args, wd) => {
 
 app.on('ready', (launch_info) => {
 	main_window = new BrowserWindow({
-		width: 1024,
+		width: 1210,
 		height: 550,
 		minWidth: 800,
 		minHeight: 510,
 		title: 'Combo Player',
 		show: false,
 		frame: false,
-		icon: ''
+		icon: '',
+		// titleBarStyle: 'hidden'
 	})
 
 	const index_html = Object.freeze({
@@ -107,8 +124,4 @@ app.on('quit', (evt, exit_code) => {
 	console.log(Date(), ' -- Application exiting with exit code', exit_code);
 })
 
-console.log('OS home folder: ', os.homedir())
-
-module.exports._log = _log
-module.exports.main_window = main_window
-module.exports.application = app
+// console.log('OS home folder: ', os.homedir())

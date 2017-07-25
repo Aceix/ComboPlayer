@@ -37,27 +37,45 @@
 						<li class="list-group-item">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
-								<span class="icon icon-right-open"></span><strong> File</strong>
+								<span class="icon icon-right-open"></span><strong>&nbsp; Media</strong>
 							</div>
 						</li>
 						<li class="list-group-item">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
-								<span class="icon icon-right-open"></span><strong> File</strong>
+								<span class="icon icon-right-open"></span><strong>&nbsp; Playback</strong>
 							</div>
 						</li>
 						<li class="list-group-item">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
-								<span class="icon icon-right-open"></span><strong> File</strong>
+								 <span class="icon icon-right-open"></span><strong>&nbsp; AVS<!-- THIS IS A COMBINATION OS AUDIO, VIDEO AND SUBTITLES MENU IN VLC --></strong> 
+							</div>
+						</li>
+						<li class="list-group-item">
+							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
+							<div class="media-body">
+								 <span class="icon icon-right-open"></span><strong>&nbsp; Tools<!-- THIS IS A COMBINATION OS AUDIO, VIDEO AND SUBTITLES MENU IN VLC --></strong> 
+							</div>
+						</li>
+						<li class="list-group-item">
+							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
+							<div class="media-body">
+								 <span class="icon icon-right-open"></span><strong>&nbsp; View<!-- THIS IS A COMBINATION OS AUDIO, VIDEO AND SUBTITLES MENU IN VLC --></strong> 
+							</div>
+						</li>
+						<li class="list-group-item">
+							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
+							<div class="media-body">
+								 <span class="icon icon-right-open"></span><strong>&nbsp; Help<!-- THIS IS A COMBINATION OS AUDIO, VIDEO AND SUBTITLES MENU IN VLC --></strong> 
 							</div>
 						</li>
 					</ul>
 				</div>
 				<div class="pane" id="centerpane" style="text-align: center">
 					<h4 id="pagetitle"><i>Welcome to ComboPlayer v1.0</i></h4>
-					<video id="videoplayer" poster="/path/to/poster.jpg" controls preload="auto" width="570" height="264">
-						<source src="../vids/vid1.ogg" type="video/ogg">
+					<video id="videoplayer" poster="/path/to/poster.jpg" controls preload="auto" width="740" height="416.25">
+						<source src="../vids/vid1.ogg" type="video/ogg" onerror="onVidoePlaybackFail(error)">
 						<source src="/path/to/video.webm" type="video/webm">
 						<!-- Captions are optional -->
 						<track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default>
@@ -91,21 +109,13 @@
 							<li class="list-group-header">
 								<input class="form-control" type="text" placeholder="Search for file...">
 							</li>
-							<li class="list-group-item">
+							<!-- <li class="list-group-item">
 								<img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32"> 
 								<div class="media-body">
 									<strong>List item title</strong>
 									<p>Lorem ipsum dolor sit amet.</p>
 								</div>
-							</li>
-							<li class="list-group-item">
-								<img class="img-circle media-object pull-left" src="/assets/img/avatar2.png" width="32" height="32">
-								<div class="media-body">
-									<strong>List item title</strong>
-									<p>Lorem ipsum dolor sit amet.</p>
-								</div>
-							</li>
-							...
+							</li> -->
 						</ul>
 					</div>
 				</div>
