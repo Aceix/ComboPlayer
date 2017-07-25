@@ -6,17 +6,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1">
 	<link rel="shortcut icon" href="">
-	<link href="css/photon.min.css" rel="stylesheet">
+	<link href="css/photon.css" rel="stylesheet">
 	<link href="css/comboplayer.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/home/sittingbull/Documents/Projects/_HOME/ComboPlayer/node_modules/plyr/dist/plyr.css">
 </head>
 
 <body>
 	<div class="window">
-		<header class="toolbar toolbar-header" style="padding-left: 17px; padding-right: 17px; padding-bottom: 5px;">
+		<header class="toolbar toolbar-header" style="padding-left: 17px; padding-right: 17px; padding-bottom: 5px;" ondblclick="onHeaderDoubleClick();">
 			<h1 class="title">Combo Player v1.0</h1>
 			<div class="header-actions">
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" title="Home"><span class="icon icon-home"></span></button>
+					<button type="button" class="btn btn-default" title="Home"><span class="icon icon-home"></span>&nbsp;Home</button>
 					<button type="button" class="btn btn-default" title="Open..."><span class="icon icon-folder"></span></button>
 					<button type="button" class="btn btn-default" title="Toggle Playlist"><span class="icon icon-list"></span></button>
 				</div>
@@ -28,7 +29,7 @@
 		</header>
 		<div class="window-content">
 			<div class="pane-group">
-				<div class="pane pane-sm" id="sidemenu">
+				<div class="pane pane-sm" id="sidemenu" style="overflow-y: hidden;">
 					<ul class="list-group">
 						<li class="list-group-header">
 							<h3 style="text-align: center">Side Menu</h3>
@@ -54,17 +55,16 @@
 					</ul>
 				</div>
 				<div class="pane" id="centerpane" style="text-align: center">
-					<h4><i>some kinda optional brief could fill here...</i></h4>
-					<video id="videoplayer" class="video-js" controls preload="auto" width="570" height="264" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-						<source src="../vids/vid1.ogg" type='video/mp4'>
-						<source src="MY_VIDEO.webm" type='video/webm'>
-						<p class="vjs-no-js">
-							To view this video please enable JavaScript, and consider upgrading to a web browser that
-							<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-						</p>
+					<h4 id="pagetitle"><i>Welcome to ComboPlayer v1.0</i></h4>
+					<video id="videoplayer" poster="/path/to/poster.jpg" controls preload="auto" width="570" height="264">
+						<source src="../vids/vid1.ogg" type="video/ogg">
+						<source src="/path/to/video.webm" type="video/webm">
+						<!-- Captions are optional -->
+						<track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default>
+						<p><em>This is embarrasing. Well, please upgrade your Chrome browser</em></p>
 					</video>
 				</div>
-				<div class="pane pane-sm sidebar" style: "overflow-y: hidden;">
+				<div class="pane pane-sm sidebar" style="overflow-y: hidden;">
 					<div style="height: 35%; vertical-align: top;">
 						<nav class="nav-group">
 							<h5 class="nav-group-title">Shortcuts</h5>
@@ -85,14 +85,14 @@
 							</span>
 						</nav>
 					</div>
-					<div style="height: 172px; vertical-align: bottom;">
+					<div style="height: 65%; vertical-align: bottom; overflow-y: auto;">
 						<span class="separator"></span>
 						<ul class="list-group" id="directorycontentsview">
 							<li class="list-group-header">
 								<input class="form-control" type="text" placeholder="Search for file...">
 							</li>
 							<li class="list-group-item">
-								 <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32"> 
+								<img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32"> 
 								<div class="media-body">
 									<strong>List item title</strong>
 									<p>Lorem ipsum dolor sit amet.</p>
@@ -112,7 +112,9 @@
 			</div>
 		</div>
 	</div>
+
 	<script src="js/comboplayer.js" type="text/javascript"></script>
+	<script src="/home/sittingbull/Documents/Projects/_HOME/ComboPlayer/node_modules/plyr/dist/plyr.js"></script>
 </body>
 
 </html>

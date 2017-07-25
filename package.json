@@ -17,11 +17,11 @@
   ],
   "author": "the_aceix",
   "license": "ISC",
-  "devDependencies": {
-    "video.js": "^6.2.0"
-  },
+  "devDependencies": {},
   "dependencies": {
+    "electron": "^1.6.11",
     "jquery": "^3.2.1",
-    "mime-types": "^2.1.15"
+    "mime-types": "^2.1.15",
+    "plyr": "^2.0.13"
   }
 }
