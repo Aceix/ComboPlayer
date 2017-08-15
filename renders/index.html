@@ -17,11 +17,11 @@
 			<h1 class="title">Combo Player v1.0</h1>
 			<div class="header-actions">
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" title="Home"><span class="icon icon-home"></span>&nbsp;Home</button>
-					<button type="button" class="btn btn-default" title="Open..."><span class="icon icon-folder"></span></button>
+					<button type="button" class="btn btn-default hoverable" title="Home"><span class="icon icon-home"></span>&nbsp;Home</button>
+					<button type="button" class="btn btn-default" title="Open..." onclick="onOpenClick()"><span class="icon icon-folder"></span></button>
 					<button type="button" class="btn btn-default" title="Toggle Playlist"><span class="icon icon-list"></span></button>
 				</div>
-				<div class="btn-group pull-right">
+				<div class="btn-group pull-right hoverable">
 					<button type="button" class="btn btn-default" title="Minimize" id="mimimizebutton" onclick="onMinimizeButtonClick()"><span class="icon icon-minus"></span></button>
 					<button type="button" class="btn btn-primary" title="Quit" id="quitbutton" onclick="onQuitButtonClick()"><span class="icon icon-cancel"></span></button>
 				</div>
@@ -32,39 +32,39 @@
 				<div class="pane pane-sm" id="sidemenu" style="overflow-y: hidden;">
 					<ul class="list-group">
 						<li class="list-group-header">
-							<h3 style="text-align: center">Side Menu</h3>
+							<h3 style="text-align: center" id="sidemenutitle"><button style="vertical-align: middle; margin-top: 6px" type="button" class="btn btn-default pull-left"><span class="icon icon-back"></span></button> Side Menu</h3>
 						</li>
-						<li class="list-group-item">
+						<li class="list-group-item hoverable">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
 								<span class="icon icon-right-open"></span><strong>&nbsp; Media</strong>
 							</div>
 						</li>
-						<li class="list-group-item">
+						<li class="list-group-item hoverable">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
 								<span class="icon icon-right-open"></span><strong>&nbsp; Playback</strong>
 							</div>
 						</li>
-						<li class="list-group-item">
+						<li class="list-group-item hoverable">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
 								 <span class="icon icon-right-open"></span><strong>&nbsp; AVS<!-- THIS IS A COMBINATION OS AUDIO, VIDEO AND SUBTITLES MENU IN VLC --></strong> 
 							</div>
 						</li>
-						<li class="list-group-item">
+						<li class="list-group-item hoverable">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
 								 <span class="icon icon-right-open"></span><strong>&nbsp; Tools<!-- THIS IS A COMBINATION OS AUDIO, VIDEO AND SUBTITLES MENU IN VLC --></strong> 
 							</div>
 						</li>
-						<li class="list-group-item">
+						<li class="list-group-item hoverable">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
 								 <span class="icon icon-right-open"></span><strong>&nbsp; View<!-- THIS IS A COMBINATION OS AUDIO, VIDEO AND SUBTITLES MENU IN VLC --></strong> 
 							</div>
 						</li>
-						<li class="list-group-item">
+						<li class="list-group-item hoverable">
 							<!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32">  -->
 							<div class="media-body">
 								 <span class="icon icon-right-open"></span><strong>&nbsp; Help<!-- THIS IS A COMBINATION OS AUDIO, VIDEO AND SUBTITLES MENU IN VLC --></strong> 
@@ -79,26 +79,28 @@
 						<source src="/path/to/video.webm" type="video/webm">
 						<!-- Captions are optional -->
 						<track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default>
-						<p><em>This is embarrasing. Well, please upgrade your Chrome browser</em></p>
+						<!-- this will never occur -->
+							<p><em>This is embarrasing. Well, please upgrade your Chrome browser</em></p>
+						<!--  -->
 					</video>
 				</div>
 				<div class="pane pane-sm sidebar" style="overflow-y: hidden;">
 					<div style="height: 35%; vertical-align: top;">
 						<nav class="nav-group">
 							<h5 class="nav-group-title">Shortcuts</h5>
-							<span class="nav-group-item" id="navhome" onclick="onNavHomeClick()">
+							<span class="nav-group-item hoverable" id="navhome" onclick="onNavHomeClick()">
 								<span class="icon icon-home"></span> <script>document.write(require('os').hostname())</script>
 							</span>
-							<span class="nav-group-item" id="navdesktop" onclick="onNavDesktopClick()">
+							<span class="nav-group-item hoverable" id="navdesktop" onclick="onNavDesktopClick()">
 								<span class="icon icon-layout"></span> Desktop
 							</span>
-							<span class="nav-group-item" id="navdownloads" onclick="onNavDownloadsClick()">
+							<span class="nav-group-item hoverable" id="navdownloads" onclick="onNavDownloadsClick()">
 								<span class="icon icon-download"></span> Downloads
 							</span>
-							<span class="nav-group-item" id="navvideos" onclick="onNavVideosClick()">
+							<span class="nav-group-item hoverable" id="navvideos" onclick="onNavVideosClick()">
 								<span class="icon icon-video"></span> Videos
 							</span>
-							<span class="nav-group-item" id="navmusic" onclick="onNavMusicClick()">
+							<span class="nav-group-item hoverable" id="navmusic" onclick="onNavMusicClick()">
 								<span class="icon icon-music"></span> Music
 							</span>
 						</nav>

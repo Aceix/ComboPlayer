@@ -6,6 +6,7 @@ const path = require('path')
 const mime = require('mime-types')
 const {ipcRenderer} = require('electron')
 const plyr = require('plyr')
+const config = require(__dirname + '/js/config.js')
 
 
 
@@ -18,9 +19,7 @@ function init(){
 	videoplayer = plyr.setup('#videoplayer')[0]
 	videoplayer.on('setup', (e) => {
 		videoplayer.poster('')
-		// create preferencecs fikle for user-defined persistence
-			videoplayer.setVolume(5)
-		// ==============
+		videoplayer.setVolume(config.initVolume)
 	})
 	videoplayer.on('ended', (evt) => {
 		// seek back to start!!!
@@ -75,7 +74,7 @@ function updateDirectoryContentsView(list){
 			_path = path.join(_path, val)
 			
 			if (String(mime.lookup(_path)).search('(video|audio)/.+') > -1) {
-				let _tmp = $('<li>', {class: 'list-group-item', onclick: 'onDirectoryContentsViewItemClick(this)'}).append($('<div>', {class: 'media-body'}).append($(`<strong>${val}</strong>`)))
+				let _tmp = $('<li>', {class: 'list-group-item', onclick: 'onDirectoryContentsViewItemClick(this)', title: val}).append($('<div>', {class: 'media-body'}).append($(`<strong>${val}</strong>`)))
 				$('#directorycontentsview').append(_tmp)
 			}
 		})
@@ -259,5 +258,14 @@ function onVidoePlaybackFail(err) {
        break
      default:
        ipcRenderer.send('log', 'An unknown video playback error occurred.', true)
-   }
- }
+	}
+}
+
+function onOpenClick() {
+	ipcRenderer.on('openFileResp', (evt, file) => {
+		// console.log(file);
+		if(file)
+			loadFileToVideoPlayer(file)
+	})
+	ipcRenderer.send('openFile')
+}

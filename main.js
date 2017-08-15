@@ -17,17 +17,17 @@ const _log = function(e, disp) {
 		let _logfile = path.join(os.homedir(), '.comboplayer', 'comboplayer-errorlog.txt')
 		fs.appendFile(_logfile, Date() + ' ::: ' + e.message + '\n', (err) => {
 			if (err) {
-				console.log(err.code)
+				console.error(err.code)
 				if (err.code == 'ENOENT') {
 					let _folderpath = _logfile.slice(0, _logfile.lastIndexOf('/'))
 				console.log(_folderpath)
 					fs.mkdir(_folderpath, (err) => {
 						if (err) {
-							return console.log(err)
+							return console.error(err)
 						}
 						fs.appendFile(_logfile, Date() + ' ::: ' + e.message + '\n', (err) => {
 							if(err)
-								console.log(err)
+								console.error(err)
 						})
 					})
 				}
@@ -77,6 +77,23 @@ ipcMain.on('dialog', (evt, msg) => {
 	dialog.showMessageBox(msg)
 })
 
+ipcMain.on('openFile', evt => {
+	if(main_window){
+		dialog.showOpenDialog(main_window,{
+			title: 'Load media file',
+			message: 'Select a media file to play',
+			filters: [{name: 'Audio', extensions: ['mp3', 'mp4', 'ogg', 'wav', 'flac', 'm4a']}, {name: 'Video', extensions: ['mp4', 'mkv', 'avi']}],
+			properties: ['openFile'],
+			defaultPath: os.homedir()
+		}, files => {
+			// console.log(files)
+			if(files)
+				evt.sender.send('openFileResp', files[0])
+		})
+	}
+})
+
+// app stuff
 if (app.makeSingleInstance((args, wd) => {
 	if(main_window){
 		if(!main_window.isFocused()){
@@ -98,6 +115,7 @@ app.on('ready', (launch_info) => {
 		show: false,
 		frame: false,
 		icon: '',
+		transparent: true
 		// titleBarStyle: 'hidden'
 	})
 

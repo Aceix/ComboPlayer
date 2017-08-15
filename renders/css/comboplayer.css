@@ -1,11 +1,32 @@
 /* TODO: CORRECT THE :HOVER OPTIONS */
 
-header > div > div > .btn :hover{
-	background-color: rgba(220, 220, 220, 0.8);
+body{
+	background-color: black;
 }
 
-.nav-group-item :hover{
+header{
+	-webkit-app-region: drag;
+	user-select: none;
+}
+
+header > div > div > .btn {
+	-webkit-app-region: no-drag;
+}
+
+/* header > div > div > .btn :hover{
+	background-color: rgba(220, 220, 220, 0.8);
+} */
+
+/* .nav-group-item :hover{
 	background-color: rgba(220, 223, 225, 0.6);
+} */
+
+.hoverable:hover{
+	background-color: rgba(220, 223, 225, 0.6);
+}
+
+.pane{
+	background-color: rgba(10, 10, 60, 0.4)
 }
 
 #directorycontentsview{
@@ -22,4 +43,13 @@ header > div > div > .btn :hover{
 
 #centerpane{
 	padding: 7px;
+	height: 500px;
+	overflow-y: hidden;
+}
+
+/* does not work */
+/* to serve as clearfix */
+#videoplayer::after{
+	content: '';
+	clear: both;
 }
